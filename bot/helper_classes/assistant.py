@@ -2,8 +2,6 @@
 
 import os
 
-from exeptions import *
-
 
 class MinorOperations:
     def __init__(self) -> None:
