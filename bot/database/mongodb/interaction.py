@@ -10,19 +10,19 @@ from helper_classes.assistant import MinorOperations
 helper = MinorOperations()
 
 class Interaction:
-	def __init__(self) -> None:
-		mongo_client = AsyncIOMotorClient(f'mongodb://localhost:27017')
-		self.__db = mongo_client['request_bot']
-		self.__current_data = self.__db['general_info_about_user'] # Коллекция с данны
-		self.__happened_events =  self.__db['happened_events']
- 
-	#def __init__(self,) -> None:
-	#	user = helper.get_mongo_login()
-	#	password = helper.get_mongo_password()
-	#	mongo_client = AsyncIOMotorClient(f'mongodb://{user}:{password}@mongodb:27017')
+	#def __init__(self) -> None:
+	#	mongo_client = AsyncIOMotorClient(f'mongodb://localhost:27017')
 	#	self.__db = mongo_client['request_bot']
 	#	self.__current_data = self.__db['general_info_about_user'] # Коллекция с данны
 	#	self.__happened_events =  self.__db['happened_events']
+ 
+	def __init__(self,) -> None:
+		user = helper.get_mongo_login()
+		password = helper.get_mongo_password()
+		mongo_client = AsyncIOMotorClient(f'mongodb://{user}:{password}@mongodb:27017')
+		self.__db = mongo_client['request_bot']
+		self.__current_data = self.__db['general_info_about_user'] # Коллекция с данны
+		self.__happened_events =  self.__db['happened_events']
   
   
 	async def find_data(self, filter: dict) -> dict:
