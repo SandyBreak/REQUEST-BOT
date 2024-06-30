@@ -13,10 +13,10 @@ class Keyboards:
         builder = InlineKeyboardBuilder(
             markup=[
                 [
-                    InlineKeyboardButton(text="❌Предложить бизнес идею", callback_data='trade_offer')
+                    InlineKeyboardButton(text="✅Предложить бизнес идею", callback_data='trade_offer')
                 ],
                 [
-                    InlineKeyboardButton(text="❌Рассказать о своих пожеланиях, предложениях", callback_data='suggest_idea')
+                    InlineKeyboardButton(text="✅Рассказать о своих пожеланиях, предложениях", callback_data='suggest_idea')
                 ]
             ],
         )
