@@ -31,8 +31,8 @@ async def enter_fio_employee(callback: CallbackQuery, state: FSMContext) -> None
     update = {'$set': {'users.$.type_message': 0}}
     await mongodb.update_data(filter_by_id, update)
     
-    await callback.message.answer(f'Выбрано: {emojis.SUCCESS} Предложить бизнес идею')
-    await callback.message.answer(f'Опишите свою бизнес идею:', reply_markup=ReplyKeyboardRemove())    
+    await callback.message.answer(f'Выбрано: {emojis.BUSINESS} Предложить бизнес-идею')
+    await callback.message.answer(f'Поделитесь вашей бизнес-идеей:', reply_markup=ReplyKeyboardRemove())    
     await callback.answer()
     
     await state.set_state(TradeOfferWish.get_contacts)
@@ -42,9 +42,9 @@ async def enter_fio_employee(callback: CallbackQuery, state: FSMContext) -> None
     filter_by_id = {'users.tg_id': callback.message.from_user.id}
     update = {'$set': {'users.$.type_message': 1}}
     await mongodb.update_data(filter_by_id, update)
-    
-    await callback.message.answer(f'Выбрано: {emojis.SUCCESS} Рассказать о своих пожеланиях, предложениях')
-    await callback.message.answer(f'Расскажите о своих пожеланиях или предложениях', reply_markup=ReplyKeyboardRemove())    
+
+    await callback.message.answer(f'Выбрано: {emojis.IDEA} Рассказать о своих пожеланиях, предложениях')
+    await callback.message.answer(f'Расскажите о ваших предложениях или пожеланиях:', reply_markup=ReplyKeyboardRemove())    
     await callback.answer()
     
     await state.set_state(TradeOfferWish.get_contacts)
@@ -87,9 +87,9 @@ async def send_data(message: Message, state: FSMContext, bot: Bot) -> None:
         logging.error(e)
     
     if success_flag:
-        await message.answer('Ваше пожелание или идея успешно отправлена! Если вы указали телефон то свами обязательно свяжутся', reply_markup=ReplyKeyboardRemove())
+        await message.answer('Ваше предложение успешно отправлено! Мы рассмотрим его в ближайшее время и дадим вам обратную связь. Спасибо, что помогаете нам развиваться!', reply_markup=ReplyKeyboardRemove())
         await  mongodb.document_the_event(type_order, datetime.now().strftime("%d-%m-%Y %H:%M"), phone_number, message.from_user.full_name, message.from_user.username, name_order)
     else:
-        await message.answer('Произошла какая то ошибка и запрос не отправлен, пожалуйста, свяжитесь с администратором', reply_markup=ReplyKeyboardRemove())
+        await message.answer('Извините, произошла ошибка при отправке вашего запроса. Пожалуйста, попробуйте еще раз. Если проблема сохраняется, свяжитесь с администратором по адресу @raptor_f_22', reply_markup=ReplyKeyboardRemove())
     
     await state.clear()

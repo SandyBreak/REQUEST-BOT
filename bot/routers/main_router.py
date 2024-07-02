@@ -31,7 +31,7 @@ async def cmd_start(message: Message, state: FSMContext)  -> None:
     keyboard = await bank_of_keys.possibilities_keyboard()
     
     hello_message = f"""
-       Привет, я бот для обратной связи с сотрудниками NBC!\nС помощью меня ты можешь сделать эти вещи{emojis.POINTER}
+    Привет! Рад видеть тебя в нашем боте для сбора бизнес-идей и предложений. Мы ценим ваш вклад и хотим, чтобы ваши идеи были услышаны. Давайте вместе двигаться вперед и воплощать инновационные решения!
     """
     
     await message.answer(hello_message, ParseMode.HTML, disable_web_page_preview=True, reply_markup=keyboard.as_markup())

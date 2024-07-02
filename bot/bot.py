@@ -22,23 +22,28 @@ emojis = Emojis()
 async def set_commands_and_description(bot: Bot) -> None:
     commands = [
     BotCommand(
-        command="/wish",
-        description="Пожелание"
-		),
-    BotCommand(
-        command="/offer",
-        description="Бизнес идея"
+        command="/cancel",
+        description="Отменить действие"
 		),
     BotCommand(
         command="/menu",
         description="Меню"
 		)
     ]
-    description_one = f"{emojis.HELLO} Привет, я бот для обратной связи с сотрудниками NBC!\n"
-    description_two = f"Нажмите на кнопку внизу экрана чтобы начать диалог {emojis.POINTER}"
-    
-    await bot.set_my_description(description=description_one+description_two)
-    await bot.set_my_short_description(short_description=description_one)
+    #description_one = f"{emojis.HELLO} Привет, я бот для обратной связи с сотрудниками NBC!\n"
+    description_one = f'''
+            Добро пожаловать в наш бот для сбора ваших бизнес-идей и предложений! Мы стремимся к развитию, и ваша обратная связь очень важна для нас.
+
+Как это работает:
+- Просто отправьте свою идею или пожелание в чат с ботом
+- Ваше предложение будет рассмотрено командой, и вы получите обратную связь
+- Лучшие идеи мы внедрим в нашу работу
+
+Давайте вместе двигаться вперед! Отправляйте идеи прямо сейчас и помогайте улучшить нашу компанию.
+    '''
+    description_two = f"Добро пожаловать в наш бот для сбора ваших бизнес-идей и предложений!"
+    await bot.set_my_description(description=description_one)
+    await bot.set_my_short_description(short_description=description_two)
     await bot.set_my_commands(commands)
     
     
@@ -60,7 +65,5 @@ async def main():
     
 
 if __name__ == "__main__":
-    #loop = asyncio.get_event_loop()
-    #loop.run_until_complete(create_database())
     asyncio.run(main())
     

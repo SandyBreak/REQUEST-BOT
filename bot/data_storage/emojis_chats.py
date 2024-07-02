@@ -13,6 +13,8 @@ class Emojis:
     ARROW_DOWN = '⬇️'
     ALLERT = '⚠️'
     HELLO = '👋'
+    BUSINESS = '📈'
+    IDEA = '💌'
     
 
 class ChatNames:
@@ -21,4 +23,4 @@ class ChatNames:
     
     TEST_QUERIES = '@requests_bot_nbc'
     BASE = '545351732'
-    LARISA = ''
+    LARISA = '2081221467'

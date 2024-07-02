@@ -3,6 +3,10 @@
 from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import KeyboardButton, InlineKeyboardBuilder
 
+from data_storage.emojis_chats import Emojis
+
+
+emojis = Emojis()
 
 class Keyboards:
     def __init__(self) -> None:
@@ -13,10 +17,10 @@ class Keyboards:
         builder = InlineKeyboardBuilder(
             markup=[
                 [
-                    InlineKeyboardButton(text="✅Предложить бизнес идею", callback_data='trade_offer')
+                    InlineKeyboardButton(text=f"{emojis.BUSINESS} Предложить бизнес-идею", callback_data='trade_offer')
                 ],
                 [
-                    InlineKeyboardButton(text="✅Рассказать о своих пожеланиях, предложениях", callback_data='suggest_idea')
+                    InlineKeyboardButton(text=f"{emojis.IDEA} Рассказать о своих пожеланиях, предложениях", callback_data='suggest_idea')
                 ]
             ],
         )
