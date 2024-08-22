@@ -30,7 +30,6 @@ async def set_commands_and_description(bot: Bot) -> None:
         description="Меню"
 		)
     ]
-    #description_one = f"{emojis.HELLO} Привет, я бот для обратной связи с сотрудниками NBC!\n"
     description_one = f'''
             Добро пожаловать в наш бот для сбора ваших бизнес-идей и предложений! Мы стремимся к развитию, и ваша обратная связь очень важна для нас.
 
