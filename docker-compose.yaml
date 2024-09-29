@@ -1,36 +1,18 @@
-version: '3.7'
-
-volumes:
-  mongodb_data:
-    driver: local
-
-networks:
-  mongodb_network:
-    driver: bridge
+version: '3.8'
 
 services:
-  mongodb:
-    container_name: request_db
-    restart: always
-    networks:
-      - mongodb_network
-    ports:
-      - 27020:27017
-    image: mongo:7.0.8-jammy
-    env_file:
-      - ./docker-compose.env
-    volumes:
-      - mongodb_data:/data/db
-
   bot:
     container_name: request_bot
     networks:
-      - mongodb_network
+      - primary_postgres_db_network
     restart: always
     build:
       context: bot/
       dockerfile: bot.dockerfile
     env_file:
       - ./docker-compose.env
-    depends_on:
-      - mongodb
+
+
+networks:
+  primary_postgres_db_network:
+    external: true
