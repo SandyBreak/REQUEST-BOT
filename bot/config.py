@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 import os
-import ast
+
+LIST_USERS_TO_NEWSLETTER = []
 
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 
