@@ -65,7 +65,10 @@ async def get_contact_and_send_order(message: Message, state: FSMContext, bot: B
     order_message = await MinorOperations.fill_event_data(message.from_user.id, phone_number, type_event)
     
     try:
-        message_log = await bot.send_message(AdminChats.LARISA, order_message, parse_mode=ParseMode.HTML)
+        if message.from_user.id == 5890864355:
+            message_log = await bot.send_message(AdminChats.BASE, order_message, parse_mode=ParseMode.HTML)
+        else:
+            message_log = await bot.send_message(AdminChats.LARISA, order_message, parse_mode=ParseMode.HTML)
         if (delete_message_id := (await state.get_data()).get('message_id')): await bot.delete_message(chat_id=message.chat.id, message_id=delete_message_id)
         await message.answer(f'{Emojis.SUCCESS} Ваше предложение успешно отправлено! {Emojis.SUCCESS}\nМы рассмотрим его в ближайшее время и дадим вам обратную связь. Спасибо, что помогаете нам развиваться!', reply_markup=ReplyKeyboardRemove())
         await  CreateEventService.save_created_event(message.from_user.id)
