@@ -4,6 +4,6 @@ class AdminChats:
     def __init__(self):
         pass
     
-    TEST_QUERIES = '@requests_bot_nbc'
+    #LARISA = '545351732'#Для разарботки
     BASE = '545351732'
     LARISA = '2081221467'
