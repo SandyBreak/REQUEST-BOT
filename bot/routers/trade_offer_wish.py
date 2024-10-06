@@ -73,7 +73,7 @@ async def get_contact_and_send_order(message: Message, state: FSMContext, bot: B
         await message.answer(f'{Emojis.SUCCESS} Ваше предложение успешно отправлено! {Emojis.SUCCESS}\nМы рассмотрим его в ближайшее время и дадим вам обратную связь. Спасибо, что помогаете нам развиваться!', reply_markup=ReplyKeyboardRemove())
         await  CreateEventService.save_created_event(message.from_user.id)
     except Exception as e:
-        message_log = await message.answer(f'{Emojis.FAIL} Произошла какая то ошибка и запрос не отправлен, пожалуйста, свяжитесь с администратором по адресу: @global_aide_bot')
+        message_log = await message.answer(f'{Emojis.FAIL} Произошла какая то ошибка и запрос не отправлен, пожалуйста, свяжитесь с администратором по адресу: @global_aide_bot', reply_markup=ReplyKeyboardRemove())
         logging.critical(e)
         
     await state.clear()
